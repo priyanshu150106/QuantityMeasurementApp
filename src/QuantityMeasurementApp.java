@@ -2,11 +2,11 @@ public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        Quantity firstValue = new Quantity(5.0);
-        Quantity secondValue = new Quantity(5.0);
+        Quantity first = new Quantity(3, LengthUnit.FEET);
+        Quantity second = new Quantity(1, LengthUnit.YARD);
 
-        boolean isEqual = firstValue.compare(secondValue);
+        boolean isEqual = first.compare(second);
 
-        System.out.println("Are both quantities equal? " + isEqual);
+        System.out.println("Are both measurements equal? " + isEqual);
     }
 }
