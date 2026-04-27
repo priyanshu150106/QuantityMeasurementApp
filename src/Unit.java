@@ -1,4 +1,4 @@
-public enum LengthUnit {
+public enum Unit {
 
     FEET(12.0),
     INCH(1.0),
@@ -7,7 +7,7 @@ public enum LengthUnit {
 
     private final double conversionFactor;
 
-    LengthUnit(double conversionFactor) {
+    Unit(double conversionFactor) {
         this.conversionFactor = conversionFactor;
     }
 
