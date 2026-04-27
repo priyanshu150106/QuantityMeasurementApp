@@ -15,4 +15,12 @@ public class Quantity {
 
         return thisInInches == otherInInches;
     }
+
+    // 🔥 New Conversion Method
+    public double convertTo(LengthUnit targetUnit) {
+
+        double valueInInches = this.value * this.unit.getConversionFactor();
+
+        return valueInInches / targetUnit.getConversionFactor();
+    }
 }

@@ -2,11 +2,10 @@ public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        Quantity first = new Quantity(3, LengthUnit.FEET);
-        Quantity second = new Quantity(1, LengthUnit.YARD);
+        Quantity quantity = new Quantity(2, LengthUnit.FEET);
 
-        boolean isEqual = first.compare(second);
+        double convertedValue = quantity.convertTo(LengthUnit.INCH);
 
-        System.out.println("Are both measurements equal? " + isEqual);
+        System.out.println("Converted Value: " + convertedValue);
     }
 }
