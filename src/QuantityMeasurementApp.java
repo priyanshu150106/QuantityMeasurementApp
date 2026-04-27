@@ -2,10 +2,11 @@ public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        Quantity quantity = new Quantity(2, LengthUnit.FEET);
+        Quantity first = new Quantity(1, LengthUnit.FEET);
+        Quantity second = new Quantity(2, LengthUnit.INCH);
 
-        double convertedValue = quantity.convertTo(LengthUnit.INCH);
+        Quantity result = first.add(second);
 
-        System.out.println("Converted Value: " + convertedValue);
+        System.out.println("Result: " + result.value + " " + result.unit);
     }
 }
