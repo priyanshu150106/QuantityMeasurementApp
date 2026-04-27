@@ -21,16 +21,16 @@ public class Quantity {
         return valueInInches / targetUnit.getConversionFactor();
     }
 
-    // 🔥 New Addition Method
-    public Quantity add(Quantity other) {
+    // 🔥 New Add Method with Target Unit
+    public Quantity add(Quantity other, LengthUnit targetUnit) {
 
         double thisInInches = this.value * this.unit.getConversionFactor();
         double otherInInches = other.value * other.unit.getConversionFactor();
 
         double totalInInches = thisInInches + otherInInches;
 
-        double resultValue = totalInInches / this.unit.getConversionFactor();
+        double resultValue = totalInInches / targetUnit.getConversionFactor();
 
-        return new Quantity(resultValue, this.unit);
+        return new Quantity(resultValue, targetUnit);
     }
 }
