@@ -40,6 +40,23 @@ public class QuantityMeasurementApp {
         }
     }
 
+    // 🔹 Volume Units (NEW - UC11)
+    enum VolumeUnit implements Unit {
+        LITRE(1.0),
+        ML(0.001),
+        GALLON(3.78541);
+
+        private final double factor;
+
+        VolumeUnit(double factor) {
+            this.factor = factor;
+        }
+
+        public double getConversionFactor() {
+            return factor;
+        }
+    }
+
     // 🔹 Generic Quantity Class
     static class Quantity<T extends Unit> {
 
@@ -84,29 +101,26 @@ public class QuantityMeasurementApp {
     // 🔹 Main Method
     public static void main(String[] args) {
 
-        // ✅ LENGTH TEST
+        // 🔸 LENGTH
         Quantity<LengthUnit> l1 = new Quantity<>(1, LengthUnit.FEET);
         Quantity<LengthUnit> l2 = new Quantity<>(12, LengthUnit.INCH);
-
         System.out.println("Length Equal? " + l1.compare(l2));
 
-        double cm = l1.convertTo(LengthUnit.CM);
-        System.out.println("1 Foot in CM: " + cm);
-
-        Quantity<LengthUnit> lResult = l1.add(l2, LengthUnit.FEET);
-        System.out.println("Length Add: " + lResult);
-
-
-        // ✅ WEIGHT TEST
+        // 🔸 WEIGHT
         Quantity<WeightUnit> w1 = new Quantity<>(1, WeightUnit.KG);
         Quantity<WeightUnit> w2 = new Quantity<>(1000, WeightUnit.G);
-
         System.out.println("Weight Equal? " + w1.compare(w2));
 
-        double pounds = w1.convertTo(WeightUnit.LB);
-        System.out.println("1 KG in LB: " + pounds);
+        // 🔸 VOLUME (UC11)
+        Quantity<VolumeUnit> v1 = new Quantity<>(1, VolumeUnit.LITRE);
+        Quantity<VolumeUnit> v2 = new Quantity<>(1000, VolumeUnit.ML);
 
-        Quantity<WeightUnit> wResult = w1.add(w2, WeightUnit.KG);
-        System.out.println("Weight Add: " + wResult);
+        System.out.println("Volume Equal? " + v1.compare(v2));
+
+        double gallons = v1.convertTo(VolumeUnit.GALLON);
+        System.out.println("1 Litre in Gallons: " + gallons);
+
+        Quantity<VolumeUnit> vResult = v1.add(v2, VolumeUnit.LITRE);
+        System.out.println("Volume Add: " + vResult);
     }
 }
